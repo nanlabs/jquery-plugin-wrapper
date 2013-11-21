@@ -1,0 +1,28 @@
+{
+	"name": "jquery-plugin-wrapper",
+	"version": "0.0.1",
+	"description": "jQuery lightweight Plugin Wrapper",
+	"keywords": [
+		"jquery",
+		"plugin",
+		"wrapper",
+		"component"
+	],
+	"homepage": "",
+	"author": {
+		"name": "NaN Labs",
+		"email": "contact@nan-labs.com",
+		"url": "http://nan-labs.com/"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/nanlabs/jquery-plugin-wrapper.git"
+	},
+	"main": "src/jquery-plugin-wrapper.js",
+	"files": [
+		"src"
+	],
+	"optionalDependencies": {
+		"jquery": ">=1.9.1"
+	}
+}
