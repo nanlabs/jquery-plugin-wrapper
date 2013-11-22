@@ -1,0 +1,9 @@
+{
+	"dataDirectory": ".cover",
+	"debugDirectory": ".cover",
+
+	"html" : {
+		"directory": ".cover",          // Directory to write HTML files too
+		"generateIndex": true               // Whether to generate an index.html file
+	}
+}

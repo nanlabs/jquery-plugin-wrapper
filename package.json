@@ -23,7 +23,8 @@
 		"src"
 	],
 	"scripts": {
-		"test": "mocha"
+		"test": "mocha",
+		"cover": "cover run node_modules/mocha/bin/_mocha && cover report html && opener ./.cover/index.html"
 	},
 	"pre-commit": [
 		"mocha"
@@ -36,6 +37,8 @@
 		"sinon": "~1.6",
 		"sinon-chai": "*",
 		"jquery-latest": "*",
-		"pre-git": "0.0.13"
+		"pre-git": "0.0.13",
+		"cover": "0.2.9",
+		"opener": "~1.3"
 	}
 }
