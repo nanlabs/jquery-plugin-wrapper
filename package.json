@@ -16,13 +16,26 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/nanlabs/jquery-plugin-wrapper.git"
+		"url": "git://github.com/nanlabs/jquery-plugin-wrapper.git"
 	},
 	"main": "src/jquery-plugin-wrapper.js",
 	"files": [
 		"src"
 	],
-	"optionalDependencies": {
-		"jquery": ">=1.9.1"
+	"scripts": {
+		"test": "mocha"
+	},
+	"pre-commit": [
+		"mocha"
+	],
+	"devDependencies": {
+		"chai": "~1.5",
+		"coffee-script": "~1.6.2",
+		"jshint": "~1.1",
+		"mocha": "~1.9",
+		"sinon": "~1.6",
+		"sinon-chai": "*",
+		"jquery-latest": "*",
+		"pre-git": "0.0.13"
 	}
 }

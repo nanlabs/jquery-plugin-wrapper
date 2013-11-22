@@ -2,16 +2,13 @@
  * jQuery plugin declaration.
  * A wrapper is created in order to ensure one instance per DOM element
  */
-var jQuery = require('jquery');
 
 module.exports = {
     wrap: function(name, clazz, $) {
-
-        if(!$) {
-            if(!jQuery) { throw Error("jQuery not found"); }
-            $ = jQuery;
+		if(!$) {
+            throw Error("jQuery not found");
         }
-        var dataKey = "plugin_" + componentName;
+        var dataKey = "plugin_" + name;
 
         $.fn[ name ] = function ( method ) {
             var plugin = this.data( dataKey );
