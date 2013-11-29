@@ -13,7 +13,9 @@ module.exports = {
         $.fn[ name ] = function ( method ) {
             var plugin = this.data( dataKey );
             if (plugin && plugin[method]) {
-                return plugin[method].apply(plugin, [].slice.call(arguments, 1));
+                var value = plugin[method].apply(plugin, [].slice.call(arguments, 1));
+				if(typeof value === 'undefined') { value = $(this); }
+				return value;
 
             } else if (typeof method === 'object' || !method) {
 

@@ -10,6 +10,7 @@ wrapper = require '../src/jquery-plugin-wrapper'
 class Component
 	constructor: (@element, @settings) ->
 	sayHello: ->
+	giveMeOne: -> 1
 
 instance = new Component()
 
@@ -44,6 +45,9 @@ describe 'jQuery plugin', ->
 		it 'should return the jQuery element if no method is called', ->
 			expect($elem.testPlugin()).to.equal $elem
 
+		it 'should throw an error is jquery is undefined', ->
+			expect(-> wrapper.wrap("testPlugin", Component)).to.throw("jQuery not found");
+
 	describe 'API', ->
 		beforeEach ->
 			$elem.data 'plugin_testPlugin', instance
@@ -55,6 +59,24 @@ describe 'jQuery plugin', ->
 
 			expect(api).to.have.been.calledOnce
 			expect(api).to.have.been.calledWithExactly "John Doe"
+
+			instance.sayHello.restore()
+
+		it 'method with no return value should return the jquery instance to enable chaining', ->
+			api = sinon.spy instance, 'sayHello'
+
+			result = $elem.testPlugin 'sayHello', "John Doe"
+
+			expect(result).to.exist
+			expect(result.testPlugin).to.equal $elem.testPlugin
+			expect(result.is($elem)).to.be.true
+
+			instance.sayHello.restore()
+
+		it 'method with return value should return the value', ->
+			result = $elem.testPlugin 'giveMeOne'
+			expect(result).to.exist
+			expect(result).to.equal 1
 
 		it 'should throw an error when an invalid method is called', ->
 			try
