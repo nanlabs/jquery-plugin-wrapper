@@ -14,16 +14,22 @@ module.exports = {
             var plugin = this.data( dataKey );
             if (plugin && plugin[method]) {
                 var value = plugin[method].apply(plugin, [].slice.call(arguments, 1));
-				if(typeof value === 'undefined') { value = $(this); }
+				if(typeof value === 'undefined') { value = this }
 				return value;
 
             } else if (typeof method === 'object' || !method) {
 
-                return this.each(function() {
+                $elems = this.each(function() {
                     if ( !$.data( this, dataKey ) ) {
                         $.data( this, dataKey, new clazz( this, method ) );
                     }
                 });
+
+				if(method && method.api && this.length > 0) {
+					return this.eq(0).data(dataKey);
+				}
+
+				return $elems;
 
             } else {
                 $.error('Method ' + method + ' does not exist on ' + name);
